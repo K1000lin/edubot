@@ -1,114 +1,41 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="es">
+<head>
 
-@section('title', 'EduBot')
+    <meta charset="UTF-8">
 
-@section('content')
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="csrf-token"
+          content="{{ csrf_token() }}">
+
+    <title>EduBot</title>
+
+    <link rel="stylesheet"
+          href="{{ asset('css/style.css') }}">
+
+</head>
+<body>
 
 <div class="chat-container">
 
-    <!-- HEADER -->
+    <h1>EduBot 🤖</h1>
 
-    <div class="chat-header">
+    <div class="messages"
+         id="messages"></div>
 
-        <h3>EduBot 🤖</h3>
+    <input type="text"
+           id="mensaje"
+           placeholder="Escribe tu pregunta">
 
-        <p>Asistente virtual institucional</p>
-        <p>Unidad Educativa 24 de Mayo</p>
-
-    </div>
-
-    <!-- BODY -->
-
-    <div class="chat-body" id="chat-body">
-
-        <div class="message bot">
-
-            <div class="message-content">
-
-                👋 Bienvenido a EduBot.<br>
-
-                Soy el asistente virtual de la institución educativa.<br><br>
-
-                Puedes consultar información sobre:
-                <ul>
-                    <li>Faltas</li>
-                    <li>Atrasos</li>
-                    <li>Uniforme</li>
-                    <li>Horario</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- FOOTER -->
-
-    <div class="chat-footer">
-
-        <!-- BOTONES RÁPIDOS -->
-
-        <div class="quick-buttons">
-
-            <button class="btn btn-primary btn-sm"
-                    onclick="preguntaRapida('¿Cómo justificar faltas?')">
-
-                Faltas
-
-            </button>
-
-            <button class="btn btn-primary btn-sm"
-                    onclick="preguntaRapida('¿Qué pasa con los atrasos?')">
-
-                Atrasos
-
-            </button>
-
-            <button class="btn btn-primary btn-sm"
-                    onclick="preguntaRapida('¿Qué sucede si no entrega tareas?')">
-
-                Tareas
-
-            </button>
-
-            <button class="btn btn-primary btn-sm"
-                    onclick="preguntaRapida('¿El uniforme es obligatorio?')">
-
-                Uniforme
-
-            </button>
-
-        </div>
-
-        <!-- INPUT -->
-
-        <div class="d-flex gap-2">
-
-            <input type="text"
-                   id="mensaje"
-                   class="form-control"
-                   placeholder="Escribe tu mensaje...">
-
-            <button class="btn btn-primary"
-                    onclick="enviarMensaje()">
-
-                <i class="bi bi-send-fill"></i>
-
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="text-center mt-3 text-black">
-
-        <small>
-            Powered by Camilo Riera © 2026
-        </small>
-
-    </div>
+    <button onclick="enviarMensaje()">
+        Enviar
+    </button>
 
 </div>
 
-@endsection
+<script src="{{ asset('js/chat.js') }}"></script>
+
+</body>
+</html>
