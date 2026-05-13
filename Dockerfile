@@ -5,9 +5,11 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libzip-dev \
-    zip
+    zip \
+    libonig-dev \
+    libxml2-dev
 
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip mbstring
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -15,7 +17,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install
+RUN composer install --ignore-platform-reqs
 
 EXPOSE 10000
 
